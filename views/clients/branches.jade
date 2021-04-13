@@ -1,0 +1,27 @@
+extends ../layout
+
+block content    
+    table(class="table table-striped table-bordered")
+        thead(class="thead-light")        
+            tr
+                th(scope="col") 영문명
+                th(scope="col") 한글명
+                th(scope="col") 가입번호
+                th(scope="col") 내부 IP 대역
+                th(scope="col") CPE 공인 IP
+                th(scope="col") VPRN
+        tbody
+            - each branch, i in branches            
+                tr
+                    td
+                        = branch.brancheName
+                    td
+                        = branch.branchkName
+                    td
+                        = branch.branchrNumber
+                    td
+                        = branch.branchIntIPRange
+                    td
+                        = branch.branchPublicIP
+                    td
+                        = branch.branchVPRN

@@ -2,10 +2,20 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+
+var bodyParser = require('body-parser');
+
+var db = require('./model/db');
+var client = require('./model/clients');
+var branch = require('./model/branches');
+var nat   = require('./model/nats');
+
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var clientsRouter = require('./routes/nfv');
+var natRouter = require('./routes/nfvNAT');
+
 
 var app = express();
 
@@ -19,8 +29,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
+app.use('/nfv', clientsRouter);
+app.use('/nfvNAT', natRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

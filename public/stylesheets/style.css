@@ -1,8 +1,28 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #f2f4f5;
 }
 
 a {
-  color: #00B7FF;
+  color: #eb3fc5;
+}
+
+.maintr:hover {
+  background-color: #EA2790;
+  font-weight: 600;
+}
+/* tr:nth-of-type(2n+1):hover {
+  background-color: #EA2790;
+  font-weight: 600;
+} */
+
+.login_form {
+  padding-top: 10em;
+}
+
+.footer {
+  position: absolute;  
+  /* margin-top: 150px;  */
+  height: 150px;
+  clear:both;
+  padding-top:20px;
 }

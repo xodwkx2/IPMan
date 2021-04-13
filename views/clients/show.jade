@@ -1,0 +1,91 @@
+extends ../layout
+
+block content
+    table(class="table table-striped table-bordered table-dark")
+        thead(class="thead-light")        
+            tr
+                th(scope="col") 영문명
+                th(scope="col") 한글명
+                th(scope="col") 고객번호
+                th(scope="col") VNF제조사
+                th(scope="col") VNF IP
+                th(scope="col") MGMT IP
+                th(scope="col") 기타
+        
+        tbody
+            tr
+                td                     
+                    = client.clienteName
+                td 
+                    = client.clientkName
+                td 
+                    = client.clientNumber
+                td 
+                    = client.clientVNFManufacturer
+                td 
+                    = client.clientVNFIP
+                td 
+                    = client.clientVNFmgmtIP
+                td
+                    div
+                        a(href=client.id + '/edit')
+                            button.btn.btn-warning.btn-sm 🛠
+
+    table(class="table table-bordered table-light")
+        thead(class="thead-light")
+            tr
+                th(scope="col") 영문명
+                th(scope="col") 한글명
+                th(scope="col") 가입번호
+                th(scope="col") 회선번호
+                th(scope="col") G/W
+                th(scope="col") CPE 공인 IP
+                th(scope="col") VPRN
+                th(scope="col") 기타
+        tbody
+            - each branch, i in branches
+                tr
+                    td
+                        if(branch.isTarget)
+                            .font-weight-bold.text-success= branch.brancheName
+                        else
+                            = branch.brancheName
+                    td
+                        = branch.branchkName
+                    td
+                        = branch.branchrNumber
+                    td  
+                        = branch.branchLineNumber
+                    td
+                        = branch.branchIntGateway
+                    td
+                        = branch.branchPublicIP
+                    td
+                        = branch.branchVPRN
+                    td
+                        div
+                            a(href=client.id + '/' + branch._id + '/edit')
+                                button.btn.btn-warning.btn-sm 🛠
+                                //- a(href=client.id + '/' + branch._id + '/delete')
+                            button.btn.btn-danger.btn-sm(type="button" data-toggle="modal" data-target="#exampleModal" data-bid="#{branch._id}" data-bkname="#{branch.branchkName}") 🗑
+    .container
+        a(href=client.id + '/new')
+            button.btn.btn-primary New
+
+    div.modal.fade(id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+        div.modal-dialog(role="document")
+            .modal-content
+                form.deleteform(action="/nfv/#{client._id}/", method="post")
+                    .modal-header
+                        h5.modal-title(id="exampleModalLabel") Modal Title
+                        button.close(type='button' data-dismiss="modal" aria-label="Close")
+                            //- span(aria-hidden="true")&times;
+                    .modal-body 
+                        .form-group
+                            label.deletewarn
+
+                    .modal-footer
+                        button.btn.btn-secondary(type="button" data-dismiss="modal") Close
+                        button.btn.btn-danger(type="submit") 🗑
+        
+    

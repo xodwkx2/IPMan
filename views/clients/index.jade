@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+
+    table.table.table-bordered.table-hover.table-striped.bg-white
+        thead.thead-light
+            tr
+                th(scope="col") 영문명
+                th(scope="col") 한글명
+                th(scope="col") 고객번호
+                th(scope="col") VNF제조사
+                th(scope="col") VNF IP
+                th(scope="col") MGNT IP
+                th(scope="col") 서비스
+        tbody
+            - each client, i in clients
+
+                tr.maintr(onClick="location.href='/nfv/#{client._id}'")
+                    td
+                        if (client.isInService)
+                            .font-weight-bold.text-success= client.clienteName
+                        else
+                            = client.clienteName                        
+                    td
+                        = client.clientkName
+                    td
+                        = client.clientNumber
+                    td
+                        = client.clientVNFManufacturer
+                    td
+                        = client.clientVNFIP
+                    td
+                        = client.clientVNFmgmtIP
+                    td
+                        = client.clientServiceName
+

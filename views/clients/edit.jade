@@ -1,0 +1,78 @@
+extends ../layout
+
+block content
+    div
+        h1.
+            #{client.clienteName}
+        form#formEditClient(name="editclient", method="post", action="/nfv/#{client._id}/edit")
+            .form-group
+                label(for="inputEnglishName") 英文名
+                input.form-control#inputEnglishName(type="text" name="eName" value="#{client.clienteName}")
+                small.form-text.text-muted Client's English name
+            .form-group
+                label(for="inputEnglishName") Korean Name
+                input.form-control#inputKoreanName(type="text" name="kName" value="#{client.clientkName}")
+                small.form-text.text-muted Client's Korean name
+            .form-group
+                label(type="number" for="inputClientNumber") 고객 번호
+                if (client.clientNumber)
+                    input.form-control#inputKoreanName(type="text" name="cNumber" value="#{client.clientNumber}")
+                else
+                    input.form-control#inputKoreanName(type="text" name="cNumber" value="")
+                small.form-text.text-muted Client's Korean name
+            .form-group
+                label(for="selectVNFManufacturer") 裝備 製造 業體名
+                label #{client.clientVNFManufacturer}
+                select.form-control#vnfManufacturer(name="vnfManufacturer" value="#{client.clientVNFManufacturer}")
+                    if (client.clientVNFManufacturer == "Fortinet")                        
+                        option(value="Paloalto") Paloalto
+                        option(value="Fortinet" selected) Fortinet
+                        option(value="")
+                    else if (client.clientVNFManufacturer == "Paloalto")
+                        option(value="Paloalto" selected) Paloalto
+                        option(value="Fortinet") Fortinet
+                        option(value="")
+                    else 
+                        option(value="" selected) 
+                        option(value="Paloalto") Paloalto
+                        option(value="Fortinet") Fortinet
+                small.form-text.text-muted Client's VNF Manufacturer
+            .form-group
+                label(for="inputVNFIP") VNF MGMT IP
+                input.form-control#inputKoreanName(type="text" name="mgmtIP" value="#{client.clientVNFmgmtIP}")
+                small.form-text.text-muted Client's VNF MGMT IP
+            .form-group
+                label(for="inputVNFIP") VNF Public IP
+                input.form-control#inputKoreanName(type="text" name="vnfIP" value="#{client.clientVNFIP}" readonly)
+                small.form-text.text-muted Client's VNF IP
+            .form-group
+                label(for="inputClientNumber") 사용중인 서비스
+                select.form-control#serviceName(name="sName" value="#{client.clientServiceName}")
+                    if (client.clientServiceName == "")
+                        option(value="" selected)
+                    else 
+                        option(value="")
+                    if (client.clientServiceName == "Basic")
+                        option(value="Basic" selected) Basic
+                    else
+                        option(value="Basic") Basic
+                    if (client.clientServiceName == "Standard")
+                        option(value="Standard" selected) Standard
+                    else 
+                        option(value="Standard") Standard
+                    if (client.clientServiceName == "Premium")
+                        option(value="Premium" selected) Premium
+                    else
+                        option(value="Premium") Premium
+                small.form-text.text-muted Client's Service
+            .form-group
+                label(for="selectisInService") Is In Service?
+                .form-check
+                    if (client.isInService)
+                        input.form-check-input(type="checkbox" name="isInService" value="true" checked)
+                    else
+                        input.form-check-input(type="checkbox" name="isInService" value="false")
+                    label.form-check-label #{client.isInService}
+                small.form-text.text-muted Check if this client is in service
+
+            button.btn.btn-primary Update

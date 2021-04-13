@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+    
+    div()
+        h1.
+            #{title}
+        form#formAddClient(name="addclient",method="post",action="/nfv")
+            p client English Name :
+                input#inputEnglishName(type="text", name="eName")
+            p client Korean Name :
+                input#inputKoreanName(type="text", name="kName")
+            p client Number :
+                input#inputClientNumber(type="number", name="cNumber")
+            p client VNF Manufacturer :
+                input#inputVNFManufacturer(type="text", name="vnfManufacturer")
+            p client VNF IP :
+                input#inputVNFIP(type="text", name="vnfIP")
+            p client Service Name :
+                input#inputServiceName(type="text", name="sName")
+            p
+                button#btnSubmit(type="submit") submit

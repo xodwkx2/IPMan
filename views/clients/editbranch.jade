@@ -1,0 +1,78 @@
+extends ../layout
+
+block content
+    div
+        h1.
+            #{branch.brancheName}
+        form#formEditBranch(name="editbranch", method="post", action="/nfv/#{client._id}/#{branch._id}/edit")
+            .form-group
+                label(for="inputVNFIP") Client
+                input.form-control#readClientName(type="text" name="client" value="#{client.clienteName}" readonly)
+                small.form-text.text-muted Client of the branch
+            .form-group
+                label(for="inputEnglishName") 英文名
+                if (branch.brancheName)
+                    input.form-control#inputEnglishName(type="text" name="beName" value="#{branch.brancheName}")
+                else
+                    input.form-control#inputEnglishName(type="text" name="beName" value="")
+                small.form-text.text-muted Branch's English name
+            .form-group
+                label(for="inputKoreanName") Korean Name
+                if (branch.branchkName)
+                    input.form-control#inputKoreanName(type="text" name="bkName" value="#{branch.branchkName}")
+                else 
+                    input.form-control#inputKoreanName(type="text" name="bkName" value="")
+                small.form-text.text-muted Branch's Korean name
+            .form-group
+                label(for="inputbranchNumber") 가입 번호
+                if (branch.branchrNumber)
+                    input.form-control#inputKoreanName(type="text" name="brNumber" value="#{branch.branchrNumber}")
+                else
+                    input.form-control#inputKoreanName(type="text" name="brNumber" value="")
+                small.form-text.text-muted Branch's Registration Number
+            .form-group
+                label(for="inputbranchNumber") 회선 번호
+                if (branch.branchLineNumber)
+                    input.form-control#inputKoreanName(type="text" name="blNumber" value="#{branch.branchLineNumber}")
+                else
+                    input.form-control#inputKoreanName(type="text" name="blNumber" value="")
+                small.form-text.text-muted Branch's Line Number
+            .form-group
+                label(for="inputbranchNumber") CPE 공인 IP
+                if (branch.branchPublicIP)
+                    input.form-control#inputKoreanName(type="text" name="bpIP" value="#{branch.branchPublicIP}")
+                else
+                    input.form-control#inputKoreanName(type="text" name="bpIP" value="")
+                small.form-text.text-muted Branch's Public IP
+            .form-group
+                label(for="selectVNFManufacturer") 내부 IP 대역
+                if (branch.branchIntIPRange)
+                    input.form-control#inputKoreanName(type="text" name="brIIPR" value="#{branch.branchIntIPRange}")
+                else    
+                    input.form-control#inputKoreanName(type="text" name="brIIPR" value="")
+                small.form-text.text-muted Branch's Internal IP Range
+            .form-group
+                label(for="selectVNFManufacturer") 내부 IP Gateway
+                if (branch.branchIntGateway)
+                    input.form-control#inputKoreanName(type="text" name="brGateway" value="#{branch.branchIntGateway}")
+                else
+                    input.form-control#inputKoreanName(type="text" name="brGateway" value="")
+                small.form-text.text-muted Branch's Internal IP Gateway                
+            .form-group
+                label(for="selectVNFManufacturer") VPRN Number
+                if (branch.branchVPRN)
+                    input.form-control#inputKoreanName(type="text" name="bVPRN" value="#{branch.branchVPRN}")
+                else
+                    input.form-control#inputKoreanName(type="text" name="bVPRN" value="")
+                small.form-text.text-muted Branch's VPRN Number
+            .form-group
+                label(for="selectisTarget") Tunnel Check
+                .form-check
+                    if (branch.isTarget)
+                        input.form-check-input(type="checkbox" name="isTarget" value="true" checked)
+                    else
+                        input.form-check-input(type="checkbox" name="isTarget" value="false")
+                    label.form-check-label #{branch.branchkName}
+                small.form-text.text-muted Check if this CPE a Target
+
+            button.btn.btn-primary Update

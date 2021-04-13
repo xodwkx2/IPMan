@@ -1,5 +1,31 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .row
+    .col-sm-3
+      p 
+    .col-sm-6
+      form.login_form
+        div.form-group.row
+          img.mx-auto.d-block(src="/images/img_login.gif", alt="log-in", srcset="")
+        div.form-group.row
+          label.text-right.col-sm-3.col-form-label(for="inputEmail3") 아이디
+          .col-sm-9
+            input.form-control(type="email" id="inputEmail3")
+        div.form-group.row
+          label.text-right.col-sm-3.col-form-label(for="inputEmail3") 비밀번호
+          .col-sm-9
+            input.form-control(type="email" id="inputEmail3")
+        div.form-group.row
+          div.col-sm-6
+            .form-check
+              input.form-check-input(type="checkbox")
+              label.form-check-label 아이디 저장
+          div.col-sm-6
+            p.text-right
+             strong 아이디/비밀번호 찾기
+        div.form-group.row
+          button.btn.btn-danger.col-sm-12(type="submit") 
+            strong Login
+    .col-sm-3
+      p 

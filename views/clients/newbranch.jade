@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+    div
+        h1.
+            #{title}
+        form#formAddBranch(name="addbranch", method="post", action="/nfv/#{client_id}")
+            .form-group
+                label(for="inputEnglishName") 영문명
+                input.form-control#inputEnglishName(type="text", name="eName")                
+                small.form-text.text-muted Branch's English Name
+            .form-group
+                label(for="inputKoreanName") 한글명 
+                input.form-control#inputKoreanName(type="text", name="kName")
+                small.form-text.text-muted Branch's Korean Name 
+            .form-group
+                label(for="inputBranchNumber") 가입번호 
+                input.form-control#inputBranchNumber(type="text", name="rNumber")
+                small.form-text.text-muted 
+            .form-group
+                label(for="inputInternalIPRange") 내부 IP 대역 
+                input.form-control#inputIPRange(type="text", name="IPRange")
+                small.form-text.text-muted Branch's Internal IP Range 
+            .form-group
+                label(for="inputInternalIPGateway") 내부 IP Gateway
+                input.form-control#inputGateway(type="text", name="gateway")
+                small.form-text.text-muted Branch's Internal Gateway IP                 
+            .form-group
+                label(for="inputPublicIP") CPE 공인 IP 
+                input.form-control#inputPublicIP(type="text", name="publicIP")
+                small.form-text.text-muted Branch's Public IP
+            .form-group
+                label(for="inputVPRN") VPRN 
+                input.form-control#inputVPRN(type="text", name="VPRN")
+                small.form-text.text-muted Branch's VPRN
+            .form-group
+                label(for="inputisTarget") is Target?
+                input.form-control#inputisTarget(type="text", name="isTarget")
+                small.form-text.text-muted is this branch a target?
+            
+            button.btn.btn-primary Create
