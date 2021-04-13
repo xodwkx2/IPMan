@@ -3,6 +3,9 @@ IP management system for Study
 
 - mongodb, express, node.js
 
+mongoDB connection
+-- mongodb://localhost/nfv
+
 
 ----
 
