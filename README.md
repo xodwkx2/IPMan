@@ -1,11 +1,16 @@
 # IPMan
-IP management system for Study 
+IP management system for ~~work~~ Study
 
 - mongodb, express, node.js
 
 mongoDB connection
--- mongodb://localhost/nfv
+- mongodb://localhost/nfv
 
+----
+## Purpose
+- to manage a C class ip range assigned manually 
+- to record an internal ip range and a gateway
+- to automation annoying things
 
 ----
 
