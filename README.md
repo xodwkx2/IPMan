@@ -10,7 +10,7 @@ mongoDB connection
 ## Purpose
 - to manage a C class ip range assigned manually 
 - to record an internal ip range and a gateway
-- to automation annoying things
+- to automate annoying things
 
 ----
 
