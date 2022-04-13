@@ -13,7 +13,7 @@ block content
                 th(scope="col") MGNT IP
                 th(scope="col") 서비스
         tbody
-            - each client, i in clients
+            each client, i in clients
 
                 tr.maintr(onClick="location.href='/nfv/#{client._id}'")
                     td
